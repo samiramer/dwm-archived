@@ -3,6 +3,10 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray        = 1;     /* 0 means no systray */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
@@ -68,16 +72,16 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *powercmd[] = { "dmenu_power", col_gray1, col_gray4, col_cyan, dmenufont, NULL };
 static const char *printguicmd[] = { "flameshot", "gui", NULL };
 static const char *printcmd[] = { "dmenu_printscreen", col_gray1, col_gray4, col_cyan, dmenufont, NULL };
-static const char *light_up[] = {"/usr/bin/light", "-A", "10", NULL};
-static const char *light_down[] = {"/usr/bin/light", "-U", "10", NULL};
+static const char *lightup[] = {"light", "-A", "10", NULL};
+static const char *lightdown[] = {"light", "-U", "10", NULL};
 static const char *upvol[] = { "pamixer", "--allow-boost", "-i", "10", NULL };
 static const char *downvol[] = { "pamixer", "-d", "10", NULL };
 static const char *mutevol[] = { "pamixer", "-t", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                         function        argument */
-    	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = light_up} },
-	{ 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = light_down} },
+    	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = lightup} },
+	{ 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = lightdown} },
         { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = downvol } },
 	{ 0,                            XF86XK_AudioMute,           spawn,          {.v = mutevol } },
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = upvol } },
