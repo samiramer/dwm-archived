@@ -70,27 +70,30 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray1, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *powercmd[] = { "dmenu_power", col_gray1, col_gray4, col_cyan, dmenufont, NULL };
-static const char *printguicmd[] = { "flameshot", "gui", NULL };
+static const char *vpncmd[] = { "dmenu_vpn", col_gray1, col_gray4, col_cyan, dmenufont, NULL };
 static const char *printcmd[] = { "dmenu_printscreen", col_gray1, col_gray4, col_cyan, dmenufont, NULL };
+static const char *printguicmd[] = { "flameshot", "gui", NULL };
 static const char *lightup[] = {"light", "-A", "10", NULL};
 static const char *lightdown[] = {"light", "-U", "10", NULL};
 static const char *upvol[] = { "pamixer", "--allow-boost", "-i", "10", NULL };
 static const char *downvol[] = { "pamixer", "-d", "10", NULL };
 static const char *mutevol[] = { "pamixer", "-t", NULL };
+static const char *browsercmd[] = { "${BROWSER}", NULL };
 
 static Key keys[] = {
 	/* modifier                     key                         function        argument */
     	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = lightup} },
 	{ 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = lightdown} },
-        { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = downvol } },
-	{ 0,                            XF86XK_AudioMute,           spawn,          {.v = mutevol } },
-	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = upvol } },
-	{ 0,                            XK_Print,                   spawn,          {.v = printguicmd } },
-	{ MODKEY,                       XK_Print,                   spawn,          {.v = printcmd } },
-	{ MODKEY|ShiftMask,             XK_x,                       spawn,          {.v = powercmd } },
-	{ MODKEY,                       XK_b,                       spawn,          SHCMD("${BROWSER}") },
-	{ MODKEY,                       XK_p,                       spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return,                  spawn,          {.v = termcmd } },
+        { 0,                            XF86XK_AudioLowerVolume,    spawn,          {.v = downvol} },
+	{ 0,                            XF86XK_AudioMute,           spawn,          {.v = mutevol} },
+	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = upvol} },
+	{ 0,                            XK_Print,                   spawn,          {.v = printguicmd} },
+	{ MODKEY,                       XK_Print,                   spawn,          {.v = printcmd} },
+	{ MODKEY|ShiftMask,             XK_v,                       spawn,          {.v = vpncmd} },
+	{ MODKEY|ShiftMask,             XK_x,                       spawn,          {.v = powercmd} },
+	{ MODKEY,                       XK_b,                       spawn,          {.v = browsercmd} },
+	{ MODKEY,                       XK_p,                       spawn,          {.v = dmenucmd} },
+	{ MODKEY,                       XK_Return,                  spawn,          {.v = termcmd} },
 	{ MODKEY|ShiftMask,             XK_b,                       togglebar,      {0} },
 	{ MODKEY,                       XK_j,                       focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,                       focusstack,     {.i = -1 } },
