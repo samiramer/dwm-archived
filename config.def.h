@@ -78,7 +78,6 @@ static const char *lightdown[] = {"light", "-U", "10", NULL};
 static const char *upvol[] = { "pamixer", "--allow-boost", "-i", "10", NULL };
 static const char *downvol[] = { "pamixer", "-d", "10", NULL };
 static const char *mutevol[] = { "pamixer", "-t", NULL };
-static const char *browsercmd[] = { "${BROWSER}", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
@@ -94,7 +93,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Print,                   spawn,          {.v = printcmd} },
 	{ MODKEY|ShiftMask,             XK_v,                       spawn,          {.v = vpncmd} },
 	{ MODKEY|ShiftMask,             XK_x,                       spawn,          {.v = powercmd} },
-	{ MODKEY,                       XK_b,                       spawn,          {.v = browsercmd} },
+	{ MODKEY,                       XK_b,                       spawn,          SHCMD("${BROWSER}") },
 	{ MODKEY,                       XK_p,                       spawn,          {.v = dmenucmd} },
 	{ MODKEY,                       XK_Return,                  spawn,          {.v = termcmd} },
 	{ MODKEY|ShiftMask,             XK_b,                       togglebar,      {0} },
