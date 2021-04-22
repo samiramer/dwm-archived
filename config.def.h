@@ -80,6 +80,7 @@ static const char *downvol[] = { "pamixer", "-d", "10", NULL };
 static const char *mutevol[] = { "pamixer", "-t", NULL };
 static const char *browsercmd[] = { "${BROWSER}", NULL };
 
+#include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key                         function        argument */
     	{ 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = lightup} },
@@ -88,6 +89,8 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioMute,           spawn,          {.v = mutevol} },
 	{ 0,                            XF86XK_AudioRaiseVolume,    spawn,          {.v = upvol} },
 	{ 0,                            XK_Print,                   spawn,          {.v = printguicmd} },
+        { MODKEY|ShiftMask,             XK_j,                       movestack,      {.i = +1 } },
+        { MODKEY|ShiftMask,             XK_k,                       movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Print,                   spawn,          {.v = printcmd} },
 	{ MODKEY|ShiftMask,             XK_v,                       spawn,          {.v = vpncmd} },
 	{ MODKEY|ShiftMask,             XK_x,                       spawn,          {.v = powercmd} },
