@@ -51,7 +51,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -75,7 +75,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 /* static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray4, "-sb", col_cyan, "-sf", col_gray1, NULL }; */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 static const char *powercmd[] = { "dmenu_power", NULL };
 static const char *vpncmd[] = { "dmenu_vpn", NULL };
 /* static const char *vpncmd[] = { "dmenu_vpn", col_gray1, col_gray4, col_cyan, dmenufont, NULL }; */
@@ -84,9 +84,9 @@ static const char *printcmd[] = { "dmenu_printscreen", NULL };
 static const char *printguicmd[] = { "flameshot", "gui", NULL };
 static const char *lightup[] = {"xbacklight", "-inc", "10", NULL};
 static const char *lightdown[] = {"xbacklight", "-dec", "10", NULL};
-static const char *upvol[] = { "pamixer", "--allow-boost", "-i", "10", NULL };
-static const char *downvol[] = { "pamixer", "-d", "10", NULL };
-static const char *mutevol[] = { "pamixer", "-t", NULL };
+static const char *upvol[] = { "volume_change", "i", NULL };
+static const char *downvol[] = { "volume_change", "d", NULL };
+static const char *mutevol[] = { "volume_change", "t", NULL };
 static const char *lockcmd[] = { "loginctl", "lock-session", NULL };
 
 ResourcePref resources[] = {
