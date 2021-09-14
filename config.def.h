@@ -16,8 +16,8 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Hack Nerd Font Mono:size=10" };
-static const char dmenufont[]       = "Hack Nerd Font Mono:size=10";
+static const char *fonts[]          = { "NotoSansMono Nerd Font:size=9.5" };
+static const char dmenufont[]       = "NotoSansMono Nerd Font:size=9.5";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -84,8 +84,8 @@ static const char *vpncmd[] = { "dmenu_vpn", NULL };
 /* static const char *printcmd[] = { "dmenu_printscreen", col_gray1, col_gray4, col_cyan, dmenufont, NULL }; */
 static const char *printcmd[] = { "dmenu_printscreen", NULL };
 static const char *printguicmd[] = { "flameshot", "gui", NULL };
-static const char *lightup[] = {"xbacklight", "-inc", "10", NULL};
-static const char *lightdown[] = {"xbacklight", "-dec", "10", NULL};
+static const char *lightup[] = {"brightness_change", "inc", NULL};
+static const char *lightup[] = {"brightness_change", "dec", NULL};
 static const char *upvol[] = { "volume_change", "i", NULL };
 static const char *downvol[] = { "volume_change", "d", NULL };
 static const char *mutevol[] = { "volume_change", "t", NULL };
