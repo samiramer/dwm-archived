@@ -80,6 +80,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *powercmd[] = { "dmenu_power", NULL };
 static const char *vpncmd[] = { "dmenu_vpn", NULL };
+static const char *monitorcmd[] = { "dmenu_monitor", NULL };
 /* static const char *vpncmd[] = { "dmenu_vpn", col_gray1, col_gray4, col_cyan, dmenufont, NULL }; */
 /* static const char *printcmd[] = { "dmenu_printscreen", col_gray1, col_gray4, col_cyan, dmenufont, NULL }; */
 static const char *printcmd[] = { "dmenu_printscreen", NULL };
@@ -121,6 +122,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Print,                   spawn,          {.v = printcmd} },
 	{ MODKEY|ShiftMask,             XK_n,                       spawn,          {.v = vpncmd} },
 	{ MODKEY|ShiftMask,             XK_x,                       spawn,          {.v = powercmd} },
+	{ MODKEY|ShiftMask,             XK_m,                       spawn,          {.v = monitorcmd} },
 	{ MODKEY,                       XK_b,                       spawn,          SHCMD("${BROWSER}") },
 	{ MODKEY,                       XK_p,                       spawn,          {.v = dmenucmd} },
 	{ MODKEY,                       XK_Return,                  spawn,          {.v = termcmd} },
